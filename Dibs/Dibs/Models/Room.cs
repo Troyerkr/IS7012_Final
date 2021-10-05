@@ -17,5 +17,8 @@ namespace Dibs.Models
 
         [Required]
         public int Capacity { get; set; }
+
+        public List<Meeting> Meetings { get; set; }
+
     }
 }

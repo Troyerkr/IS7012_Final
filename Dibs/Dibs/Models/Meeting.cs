@@ -37,8 +37,11 @@ namespace Dibs.Models
         //Meeting to Attendee
         public List<Attendee> Attendees { get; set; }
 
-
-
+        //Meeting to Room
+        [DisplayName("Room Number")]
+        public Room Room { get; set; }
+        [DisplayName("Room Number")]
+        public int RoomId { get; set; }
 
     }
 }
