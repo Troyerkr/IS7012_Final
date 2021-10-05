@@ -15,12 +15,16 @@ namespace Dibs.Models
         public int Id { get; set; }
 
         //MeetingUser to Attendee
+        [DisplayName("Attendee Email")]
         public MeetingUser MeetingUser { get; set; }
+        [DisplayName("Attendee Email")]
         public int? MeetingUserId { get; set; }
         //See note for why it is nullable
 
         //MeetingUser to Meeting
+        [DisplayName("Meeting Title")]
         public Meeting Meeting { get; set; }
+        [DisplayName("Meeting Title")]
         public int? MeetingId { get; set; }
         //See note for why it is nullable
 

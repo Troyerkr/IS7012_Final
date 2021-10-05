@@ -29,8 +29,9 @@ namespace Dibs.Models
         public string Notes { get; set; }
        
         //Meeting To MeetingUser
-        [DisplayName("Host Name")]
+        [DisplayName("Host Email")]
         public MeetingUser MeetingUser { get; set; }
+        [DisplayName("Host Email")]
         public int MeetingUserId { get; set; }
 
         //Meeting to Attendee
