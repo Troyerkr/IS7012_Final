@@ -24,8 +24,7 @@ namespace Dibs.Pages.Meetings
         public async Task OnGetAsync()
         {
             Meeting = await _context.Meeting
-                .Include(m => m.MeetingUser).ToListAsync();
-            Meeting = await _context.Meeting
+                .Include(m => m.MeetingUser)
                 .Include(m => m.Room).ToListAsync();
         }
     }
