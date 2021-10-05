@@ -35,7 +35,16 @@ namespace Dibs.Pages.Meetings
             {
                 return NotFound();
             }
+
+            Meeting = await _context.Meeting
+                .Include(m => m.Room).FirstOrDefaultAsync(m => m.Id == id);
+
+            if (Meeting == null)
+            {
+                return NotFound();
+            }
             return Page();
+
         }
     }
 }

@@ -25,6 +25,8 @@ namespace Dibs.Pages.Meetings
         {
             Meeting = await _context.Meeting
                 .Include(m => m.MeetingUser).ToListAsync();
+            Meeting = await _context.Meeting
+                .Include(m => m.Room).ToListAsync();
         }
     }
 }
