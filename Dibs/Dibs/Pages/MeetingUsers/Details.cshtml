@@ -6,36 +6,89 @@
 }
 
 <h1>@Html.DisplayFor(model => model.MeetingUser.FullName) Details</h1>
-
+<hr />
 <div>
-    <h4>User</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingUser.FirstName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MeetingUser.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingUser.LastName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MeetingUser.LastName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingUser.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MeetingUser.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingUser.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MeetingUser.Email)
-        </dd>
-    </dl>
+
+
+    <div class="row">
+        <div class="col">
+            <h4>User</h4>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingUser.FirstName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingUser.FirstName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingUser.LastName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingUser.LastName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingUser.Phone)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingUser.Phone)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingUser.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingUser.Email)
+                </dd>
+            </dl>
+        </div>
+        <div class="col">
+            <h4>Hosted Meetings</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Meeting Name</th>
+                        <th>Date</th>
+                        <th>Room</th>
+                        <th>Start Meeting</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Meeting loop-->
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col">
+            <h4>Meeting Invitations</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Room</th>
+                        <th>RSVP</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Invitation Loop-->
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><!--add if statement--></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.MeetingUser.Id">Edit</a> |
