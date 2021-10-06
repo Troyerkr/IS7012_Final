@@ -28,7 +28,9 @@ namespace Dibs.Pages.MeetingUsers
                 return NotFound();
             }
 
-            MeetingUser = await _context.MeetingUser.FirstOrDefaultAsync(m => m.Id == id);
+            MeetingUser = await _context.MeetingUser
+                .Include(x => x.Attendees).Include(x => x.Meetings)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (MeetingUser == null)
             {

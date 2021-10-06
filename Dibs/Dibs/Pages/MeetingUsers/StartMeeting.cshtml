@@ -1,30 +1,28 @@
 ﻿@page
-@model Dibs.Pages.Meetings.StartMeetingModel
+@model Dibs.Pages.MeetingUsers.StartMeetingModel
 
 @{
     ViewData["Title"] = "StartMeeting";
 }
 
-<h1>StartMeeting</h1>
-
-<h4>Meeting</h4>
+<h1>@Html.DisplayFor(model => model.Meeting.Title)</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Meeting.Id" />
-            <div class="form-group">
+            <div hidden class="form-group">
                 <label asp-for="Meeting.Title" class="control-label"></label>
                 <input asp-for="Meeting.Title" class="form-control" />
                 <span asp-validation-for="Meeting.Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div hidden class="form-group">
                 <label asp-for="Meeting.MeetDate" class="control-label"></label>
                 <input asp-for="Meeting.MeetDate" class="form-control" />
                 <span asp-validation-for="Meeting.MeetDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div hidden class="form-group">
                 <label asp-for="Meeting.NumOfInvites" class="control-label"></label>
                 <input asp-for="Meeting.NumOfInvites" class="form-control" />
                 <span asp-validation-for="Meeting.NumOfInvites" class="text-danger"></span>
@@ -34,7 +32,7 @@
                 <input asp-for="Meeting.Notes" class="form-control" />
                 <span asp-validation-for="Meeting.Notes" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div hidden class="form-group">
                 <label asp-for="Meeting.MeetingUserId" class="control-label"></label>
                 <select asp-for="Meeting.MeetingUserId" class="form-control" asp-items="ViewBag.MeetingUserId"></select>
                 <span asp-validation-for="Meeting.MeetingUserId" class="text-danger"></span>
@@ -44,10 +42,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {

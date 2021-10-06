@@ -9,19 +9,19 @@ using Microsoft.EntityFrameworkCore;
 using Dibs.Data;
 using Dibs.Models;
 
-namespace Dibs.Pages.Attendees
+namespace Dibs.Pages.MeetingUsers
 {
-    public class RSVPModel : PageModel
+    public class StartMeetingModel : PageModel
     {
         private readonly Dibs.Data.DibsContext _context;
 
-        public RSVPModel(Dibs.Data.DibsContext context)
+        public StartMeetingModel(Dibs.Data.DibsContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public Attendee Attendee { get; set; }
+        public Meeting Meeting { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,15 +30,13 @@ namespace Dibs.Pages.Attendees
                 return NotFound();
             }
 
-            Attendee = await _context.Attendee
-                .Include(a => a.Meeting)
-                .Include(a => a.MeetingUser).FirstOrDefaultAsync(m => m.Id == id);
+            Meeting = await _context.Meeting
+                .Include(m => m.MeetingUser).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Attendee == null)
+            if (Meeting == null)
             {
                 return NotFound();
             }
-           ViewData["MeetingId"] = new SelectList(_context.Meeting, "Id", "Title");
            ViewData["MeetingUserId"] = new SelectList(_context.MeetingUser, "Id", "Email");
             return Page();
         }
@@ -52,7 +50,7 @@ namespace Dibs.Pages.Attendees
                 return Page();
             }
 
-            _context.Attach(Attendee).State = EntityState.Modified;
+            _context.Attach(Meeting).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace Dibs.Pages.Attendees
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AttendeeExists(Attendee.Id))
+                if (!MeetingExists(Meeting.Id))
                 {
                     return NotFound();
                 }
@@ -70,12 +68,12 @@ namespace Dibs.Pages.Attendees
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Details", new { id = Meeting.MeetingUserId });
         }
 
-        private bool AttendeeExists(int id)
+        private bool MeetingExists(int id)
         {
-            return _context.Attendee.Any(e => e.Id == id);
+            return _context.Meeting.Any(e => e.Id == id);
         }
     }
 }

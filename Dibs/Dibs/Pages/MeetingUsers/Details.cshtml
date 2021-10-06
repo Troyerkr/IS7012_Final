@@ -42,51 +42,84 @@
         </div>
         <div class="col">
             <h4>Hosted Meetings</h4>
-            <table>
+            @if (Model.MeetingUser.Meetings.Any())
+            {
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Meeting Name</th>
                         <th>Date</th>
                         <th>Room</th>
-                        <th>Start Meeting</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!--Meeting loop-->
+                @foreach (var item in Model.MeetingUser.Meetings)
+                {
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>@Html.DisplayFor(ModelItem => item.Title)</td>
+                        <td>@Html.DisplayFor(ModelItem => item.MeetDate)</td>
+                        <td>ADD ROOM</td>
+                        <td><a class="badge badge-pill badge-success" asp-page="./StartMeeting" asp-route-id="@item.Id">Start</a></td>
                     </tr>
+                }
                 </tbody>
             </table>
+            }
+            else
+            {
+                <div class="alert alert-warning"> 
+                    No Meetings yet.
+                </div>
+            }
         </div>
     </div>
     <div class="row">
         <div class=" col">
             <h4>Meeting Invitations</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Room</th>
-                        <th>RSVP</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--Invitation Loop-->
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><!--add if statement--></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+            @if (Model.MeetingUser.Attendees.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Room</th>
+                            <th>RSVP</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.MeetingUser.Attendees)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(ModelItem => item.Meeting.Title)</td>
+                            <td>@Html.DisplayFor(ModelItem => item.Meeting.MeetDate)</td>
+                            <td>ADD ROOM</td>
+                            <td>
+                                @if (item.IsAttending)
+                                {
+                                    <span class="badge badge-pill badge-success">Yes</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-pill badge-danger">No</span>
+                                }
+                            </td>
+                            <td>
+                                <a class="badge badge-pill badge-warning" asp-page="./RSVP" asp-route-id="@item.Id">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    No Invitations yet.
+                </div>
+            }
         </div>
     </div>
 </div>
