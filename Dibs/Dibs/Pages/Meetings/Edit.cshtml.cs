@@ -31,13 +31,16 @@ namespace Dibs.Pages.Meetings
             }
 
             Meeting = await _context.Meeting
-                .Include(m => m.MeetingUser).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(m => m.MeetingUser)
+                .Include(m => m.Room).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Meeting == null)
             {
                 return NotFound();
             }
            ViewData["MeetingUserId"] = new SelectList(_context.MeetingUser, "Id", "Email");
+            ViewData["RoomId"] = new SelectList(_context.Room, "Id", "RoomNum");
+
             return Page();
         }
 

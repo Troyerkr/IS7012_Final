@@ -47,7 +47,8 @@ namespace Dibs.Migrations
                     MeetDate = table.Column<DateTime>(nullable: false),
                     NumOfInvites = table.Column<int>(nullable: false),
                     Notes = table.Column<string>(nullable: true),
-                    MeetingUserId = table.Column<int>(nullable: false)
+                    MeetingUserId = table.Column<int>(nullable: false),
+                    RoomId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,6 +57,12 @@ namespace Dibs.Migrations
                         name: "FK_Meeting_MeetingUser_MeetingUserId",
                         column: x => x.MeetingUserId,
                         principalTable: "MeetingUser",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Meeting_Room_RoomId",
+                        column: x => x.RoomId,
+                        principalTable: "Room",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -102,6 +109,11 @@ namespace Dibs.Migrations
                 name: "IX_Meeting_MeetingUserId",
                 table: "Meeting",
                 column: "MeetingUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Meeting_RoomId",
+                table: "Meeting",
+                column: "RoomId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -110,13 +122,13 @@ namespace Dibs.Migrations
                 name: "Attendee");
 
             migrationBuilder.DropTable(
-                name: "Room");
-
-            migrationBuilder.DropTable(
                 name: "Meeting");
 
             migrationBuilder.DropTable(
                 name: "MeetingUser");
+
+            migrationBuilder.DropTable(
+                name: "Room");
         }
     }
 }

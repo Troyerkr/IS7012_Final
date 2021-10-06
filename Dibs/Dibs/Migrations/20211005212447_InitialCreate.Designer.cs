@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dibs.Migrations
 {
     [DbContext(typeof(DibsContext))]
-    [Migration("20211001172154_InitialCreate")]
+    [Migration("20211005212447_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,9 @@ namespace Dibs.Migrations
                     b.Property<int>("NumOfInvites")
                         .HasColumnType("int");
 
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -76,6 +79,8 @@ namespace Dibs.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MeetingUserId");
+
+                    b.HasIndex("RoomId");
 
                     b.ToTable("Meeting");
                 });
@@ -145,8 +150,14 @@ namespace Dibs.Migrations
             modelBuilder.Entity("Dibs.Models.Meeting", b =>
                 {
                     b.HasOne("Dibs.Models.MeetingUser", "MeetingUser")
-                        .WithMany()
+                        .WithMany("Meetings")
                         .HasForeignKey("MeetingUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dibs.Models.Room", "Room")
+                        .WithMany("Meetings")
+                        .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
