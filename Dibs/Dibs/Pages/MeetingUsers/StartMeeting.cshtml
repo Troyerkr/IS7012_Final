@@ -8,7 +8,7 @@
 <h1>@Html.DisplayFor(model => model.Meeting.Title)</h1>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Meeting.Id" />
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Meeting.Notes" class="control-label"></label>
-                <input asp-for="Meeting.Notes" class="form-control" />
+                <textarea asp-for="Meeting.Notes" class="form-control" rows="10"></textarea>
                 <span asp-validation-for="Meeting.Notes" class="text-danger"></span>
             </div>
             <div hidden class="form-group">

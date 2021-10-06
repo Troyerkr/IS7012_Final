@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Attendee.Message" class="control-label"></label>
-                <input asp-for="Attendee.Message" class="form-control" />
+                <textarea asp-for="Attendee.Message" class="form-control"></textarea>
                 <span asp-validation-for="Attendee.Message" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -37,10 +37,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-page="./Index">Back to List</a>
 </div>
 
 @section Scripts {
