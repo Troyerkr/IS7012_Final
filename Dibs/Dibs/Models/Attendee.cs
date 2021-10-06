@@ -35,8 +35,12 @@ namespace Dibs.Models
         [StringLength(90)]
         public string Message { get; set; }
 
-
-
-
+        public int NonNullMeetingId
+        {
+            get
+            {
+                return MeetingId.Value;
+            }
+        }
     }
 }

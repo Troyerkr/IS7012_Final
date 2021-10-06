@@ -6,36 +6,120 @@
 }
 
 <h1>@Html.DisplayFor(model => model.MeetingUser.FullName) Details</h1>
-
+<hr />
 <div>
-    <h4>User</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingUser.FirstName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MeetingUser.FirstName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingUser.LastName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MeetingUser.LastName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingUser.Phone)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MeetingUser.Phone)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.MeetingUser.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MeetingUser.Email)
-        </dd>
-    </dl>
+
+
+    <div class="row">
+        <div class="col">
+            <h4>User</h4>
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingUser.FirstName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingUser.FirstName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingUser.LastName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingUser.LastName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingUser.Phone)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingUser.Phone)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.MeetingUser.Email)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.MeetingUser.Email)
+                </dd>
+            </dl>
+        </div>
+        <div class="col">
+            <h4>Hosted Meetings</h4>
+            @if (Model.MeetingUser.Meetings.Any())
+            {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Meeting Name</th>
+                        <th>Date</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.MeetingUser.Meetings)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(ModelItem => item.Title)</td>
+                        <td>@Html.DisplayFor(ModelItem => item.MeetDate)</td>
+                        <td><a class="badge badge-pill badge-success" asp-page="./StartMeeting" asp-route-id="@item.Id">Start</a></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            }
+            else
+            {
+                <div class="alert alert-warning"> 
+                    No Meetings yet.
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class=" col">
+            <h4>Meeting Invitations</h4>
+            @if (Model.MeetingUser.Attendees.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Room</th>
+                            <th>RSVP</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var item in Model.MeetingUser.Attendees)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(ModelItem => Model.AllMeetings[item.NonNullMeetingId - 1].Title)</td>
+                            <td>@Html.DisplayFor(ModelItem => Model.AllMeetings[item.NonNullMeetingId - 1].MeetDate)</td>
+                            <td>@Html.DisplayFor(ModelItem => Model.AllRooms[Model.AllMeetings[item.NonNullMeetingId - 1].RoomId-1].RoomNum)</td>
+                            <td>
+                                @if (item.IsAttending)
+                                {
+                                    <span class="badge badge-pill badge-success">Yes</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-pill badge-danger">No</span>
+                                }
+                            </td>
+                            <td>
+                                <a class="badge badge-pill badge-warning" asp-page="./RSVP" asp-route-id="@item.Id">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-warning">
+                    No Invitations yet.
+                </div>
+            }
+        </div>
+    </div>
 </div>
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.MeetingUser.Id">Edit</a> |
