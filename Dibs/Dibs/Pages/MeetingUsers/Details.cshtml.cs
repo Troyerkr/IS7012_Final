@@ -20,6 +20,8 @@ namespace Dibs.Pages.MeetingUsers
         }
 
         public MeetingUser MeetingUser { get; set; }
+        public List<Room> AllRooms { get; set; }
+        public List<Meeting> AllMeetings { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,8 +31,11 @@ namespace Dibs.Pages.MeetingUsers
             }
 
             MeetingUser = await _context.MeetingUser
-                .Include(x => x.Attendees).Include(x => x.Meetings)
+                .Include(m => m.Attendees).Include(m => m.Meetings)
                 .FirstOrDefaultAsync(m => m.Id == id);
+
+            AllMeetings = _context.Meeting.ToList();
+            AllRooms = _context.Room.ToList();
 
             if (MeetingUser == null)
             {

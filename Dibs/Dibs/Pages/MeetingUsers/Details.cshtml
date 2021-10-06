@@ -82,6 +82,7 @@
                         <tr>
                             <th>Name</th>
                             <th>Date</th>
+                            <th>Room</th>
                             <th>RSVP</th>
                             <th></th>
                         </tr>
@@ -90,8 +91,9 @@
                     @foreach (var item in Model.MeetingUser.Attendees)
                     {
                         <tr>
-                            <td>@Html.DisplayFor(ModelItem => item.Meeting.Title)</td>
-                            <td>@Html.DisplayFor(ModelItem => item.Meeting.MeetDate)</td>
+                            <td>@Html.DisplayFor(ModelItem => Model.AllMeetings[item.NonNullMeetingId - 1].Title)</td>
+                            <td>@Html.DisplayFor(ModelItem => Model.AllMeetings[item.NonNullMeetingId - 1].MeetDate)</td>
+                            <td>@Html.DisplayFor(ModelItem => Model.AllRooms[Model.AllMeetings[item.NonNullMeetingId - 1].RoomId-1].RoomNum)</td>
                             <td>
                                 @if (item.IsAttending)
                                 {
