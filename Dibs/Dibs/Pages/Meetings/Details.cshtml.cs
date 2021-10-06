@@ -29,7 +29,7 @@ namespace Dibs.Pages.Meetings
             }
 
             Meeting = await _context.Meeting
-                .Include(m => m.MeetingUser).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(m => m.MeetingUser).Include(mu=>mu.Attendees).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Meeting == null)
             {

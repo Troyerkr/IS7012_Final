@@ -43,6 +43,41 @@
         </dd>
     </dl>
 </div>
+
+<p>Action people have taken</p>
+@if (Model.Meeting.Attendees.Any())
+{
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meeting.Attendees[0].MeetingUser.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meeting.Attendees[0].IsAttending)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Meeting.Attendees)
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingUserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsAttending)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Meeting.Id">Edit</a> |
     <a asp-page="./Index">Back to List</a>
