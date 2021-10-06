@@ -50,8 +50,6 @@ namespace Dibs.Pages.Meetings
                 ModelState.AddModelError("Meeting.NumOfInvites", "Number of invites exceeds room capacity");
             }
 
-            //No two meetings are in the same room on the same day -TODO
-
             //Meeting must be in the future
             DateTime RequestedDate = Meeting.MeetDate.Date;
             DateTime CurrentDate = DateTime.Now.Date;
@@ -61,8 +59,28 @@ namespace Dibs.Pages.Meetings
             }
 
 
-            //No user is hosting more than one meeting on the same day -TODO
+            //No user is hosting more than one meeting on the same day
+            int ThisHostId = Meeting.MeetingUserId;
+            var AllHostIds = _context.Meeting.Where(h => h.MeetingUserId == ThisHostId).ToList();
+            foreach(Meeting Host in AllHostIds)
+            {
+                if(Host.MeetDate == RequestedDate)
+                {
+                    ModelState.AddModelError("Meeting.MeetDate", "You have a meeting already scheduled for this date");
+                }
+            }
 
+            //No two meetings are in the same room on the same day
+            int ThisRoomId = Meeting.RoomId;
+            DateTime ThisMeetDate = Meeting.MeetDate;
+            var AllMeetings = _context.Meeting.ToList();
+            foreach(Meeting AnyMeeting in AllMeetings)
+            {
+                if (ThisRoomId == AnyMeeting.RoomId && ThisMeetDate == AnyMeeting.MeetDate)
+                {
+                    ModelState.AddModelError("Meeting.MeetDate", "This room is already booked for this date");
+                }
+            }
 
             //THEN RE-VALIDATE
             if (!ModelState.IsValid)
