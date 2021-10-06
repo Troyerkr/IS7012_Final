@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> <!-- Created with Vectornator for iOS (http://vectornator.io/) --><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg height="100%" style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" xmlns:vectornator="http://vectornator.io" version="1.1" viewBox="0 0 994 1135">
+<metadata>
+<vectornator:setting key="DimensionsVisible" value="1"/>
+<vectornator:setting key="PencilOnly" value="0"/>
+<vectornator:setting key="SnapToPoints" value="0"/>
+<vectornator:setting key="OutlineMode" value="0"/>
+<vectornator:setting key="CMYKEnabledKey" value="0"/>
+<vectornator:setting key="RulersVisible" value="1"/>
+<vectornator:setting key="SnapToEdges" value="0"/>
+<vectornator:setting key="GuidesVisible" value="1"/>
+<vectornator:setting key="DisplayWhiteBackground" value="0"/>
+<vectornator:setting key="doHistoryDisabled" value="0"/>
+<vectornator:setting key="SnapToGuides" value="1"/>
+<vectornator:setting key="TimeLapseWatermarkDisabled" value="0"/>
+<vectornator:setting key="Units" value="Points"/>
+<vectornator:setting key="DynamicGuides" value="0"/>
+<vectornator:setting key="IsolateActiveLayer" value="0"/>
+<vectornator:setting key="SnapToGrid" value="0"/>
+</metadata>
+<defs/>
+<g id="Layer 3" vectornator:layerName="Layer 3">
+<path stroke="#000000" stroke-width="18.4626" d="M608.591+76.6308L502.927+371.369" fill="none" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#e15947" stroke-width="18.4626" d="M614.204+61.8397L502.927+371.369" fill="none" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#e15947" stroke-width="21.436" d="M599.844+40.9375L638.469+56.3438L599.844+40.9375Z" fill="none" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+<path stroke="#e15947" stroke-width="7.12961" d="M599.844+40.9375L638.469+56.3438L599.844+40.9375ZM614.219+61.8438L502.938+371.375L614.219+61.8438ZM635+81.25L566.875+271.562C566.875+271.563+639.731+351.183+728+327C816.269+302.817+888.844+382.312+888.844+382.312L958.094+192.375C958.094+192.375+886.415+113.981+786.75+130.469C702.479+144.41+635+81.25+635+81.25Z" fill="#e15947" stroke-linecap="round" opacity="1" stroke-linejoin="round"/>
+</g>
+<g id="Layer 2" vectornator:layerName="Layer 2">
+<path d="M51.5742+730.331C51.5742+525.149+222.436+358.815+433.206+358.815C643.975+358.815+814.837+525.149+814.837+730.331C814.837+935.514+643.975+1101.85+433.206+1101.85C222.436+1101.85+51.5742+935.514+51.5742+730.331Z" opacity="1" fill="#d9d9d9"/>
+</g>
+</svg>
