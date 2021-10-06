@@ -49,7 +49,6 @@
                     <tr>
                         <th>Meeting Name</th>
                         <th>Date</th>
-                        <th>Room</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -59,7 +58,6 @@
                     <tr>
                         <td>@Html.DisplayFor(ModelItem => item.Title)</td>
                         <td>@Html.DisplayFor(ModelItem => item.MeetDate)</td>
-                        <td>ADD ROOM</td>
                         <td><a class="badge badge-pill badge-success" asp-page="./StartMeeting" asp-route-id="@item.Id">Start</a></td>
                     </tr>
                 }
@@ -84,7 +82,6 @@
                         <tr>
                             <th>Name</th>
                             <th>Date</th>
-                            <th>Room</th>
                             <th>RSVP</th>
                             <th></th>
                         </tr>
@@ -95,7 +92,6 @@
                         <tr>
                             <td>@Html.DisplayFor(ModelItem => item.Meeting.Title)</td>
                             <td>@Html.DisplayFor(ModelItem => item.Meeting.MeetDate)</td>
-                            <td>ADD ROOM</td>
                             <td>
                                 @if (item.IsAttending)
                                 {
