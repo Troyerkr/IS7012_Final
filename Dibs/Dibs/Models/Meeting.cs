@@ -24,7 +24,7 @@ namespace Dibs.Models
         [DisplayName("Number of People Invited to the Meeting")]
         public int NumOfInvites { get; set; }
 
-
+           
         [DisplayName("Meeting Notes")]
         public string Notes { get; set; }
        

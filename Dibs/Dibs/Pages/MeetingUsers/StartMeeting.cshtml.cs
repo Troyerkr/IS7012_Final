@@ -31,13 +31,15 @@ namespace Dibs.Pages.MeetingUsers
             }
 
             Meeting = await _context.Meeting
-                .Include(m => m.MeetingUser).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(m => m.MeetingUser)
+                .Include(m => m.Room).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Meeting == null)
             {
                 return NotFound();
             }
            ViewData["MeetingUserId"] = new SelectList(_context.MeetingUser, "Id", "Email");
+           ViewData["RoomId"] = new SelectList(_context.Room, "Id", "RoomNum");
             return Page();
         }
 
@@ -68,7 +70,7 @@ namespace Dibs.Pages.MeetingUsers
                 }
             }
 
-            return RedirectToPage("./Details", new { id = Meeting.MeetingUserId });
+            return RedirectToPage("./Details",new { id = Meeting.MeetingUserId});
         }
 
         private bool MeetingExists(int id)
