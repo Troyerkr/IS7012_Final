@@ -44,7 +44,7 @@
     </dl>
 </div>
 
-<p>Action people have taken</p>
+<p>People who accepted the meeting</p>
 @if (Model.Meeting.Attendees.Any())
 {
     <div>
@@ -60,7 +60,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Meeting.Attendees)
+                @foreach (var item in Model.Meeting.Attendees.Where(i => i.IsAttending == true))
                 {
 
                     <tr>
@@ -77,6 +77,38 @@
     </div>
 }
 
+<p>People who declined the meeting</p>
+@if (Model.Meeting.Attendees.Any())
+{
+    <div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meeting.Attendees[0].MeetingUser.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Meeting.Attendees[0].IsAttending)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Meeting.Attendees.Where(i => i.IsAttending == false))
+                {
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MeetingUserId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IsAttending)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
 
 <div>
     <a asp-page="./Edit" asp-route-id="@Model.Meeting.Id">Edit</a> |
