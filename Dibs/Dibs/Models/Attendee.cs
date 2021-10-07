@@ -35,6 +35,7 @@ namespace Dibs.Models
         [StringLength(90)]
         public string Message { get; set; }
 
+        //had to be non-null for a function
         public int NonNullMeetingId
         {
             get

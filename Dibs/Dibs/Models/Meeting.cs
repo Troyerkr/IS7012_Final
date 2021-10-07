@@ -43,5 +43,16 @@ namespace Dibs.Models
         [DisplayName("Room Number")]
         public int RoomId { get; set; }
 
+        //[DisplayName("Meeting Info")]
+        //public string MeetingInfo
+        //{
+        //    get
+        //    {
+                
+        //    }
+        //}
+
+
+
     }
 }

@@ -13,6 +13,7 @@ namespace Dibs.Models
 
         [DisplayName("Room Number")]
         [Required]
+        
         public string RoomNum { get; set; }
 
         [Required]
