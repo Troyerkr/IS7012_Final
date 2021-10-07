@@ -33,7 +33,7 @@ namespace Dibs.Pages.Meetings
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            ViewData["MeetingUserId"] = new SelectList(_context.MeetingUser, "Id", "Email");
+            ViewData["MeetingUserId"] = new SelectList(_context.MeetingUser, "Id", "FullName");
             ViewData["RoomId"] = new SelectList(_context.Room, "Id", "RoomNum");
 
             if (!ModelState.IsValid)

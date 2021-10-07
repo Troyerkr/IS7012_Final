@@ -13,6 +13,7 @@ namespace Dibs.Models
 
         [Required]
         [DisplayName("Meeting Title")]
+        [StringLength(50)]
         public string Title { get; set; }
 
         [Required]
@@ -21,10 +22,11 @@ namespace Dibs.Models
         public DateTime MeetDate { get; set; }
 
         [Required]
+        [Range(1,500)]
         [DisplayName("Number of People Invited to the Meeting")]
         public int NumOfInvites { get; set; }
 
-           
+        [StringLength(200)]   
         [DisplayName("Meeting Notes")]
         public string Notes { get; set; }
        
@@ -43,7 +45,7 @@ namespace Dibs.Models
         [DisplayName("Room Number")]
         public int RoomId { get; set; }
 
-        [DisplayName("Meeting Info")]
+        [DisplayName("Meeting Size")]
         public int MeetingSize // people invited + host
         {
             get
