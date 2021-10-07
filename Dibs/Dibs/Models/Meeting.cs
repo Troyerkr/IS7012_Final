@@ -43,14 +43,14 @@ namespace Dibs.Models
         [DisplayName("Room Number")]
         public int RoomId { get; set; }
 
-        //[DisplayName("Meeting Info")]
-        //public string MeetingInfo
-        //{
-        //    get
-        //    {
-                
-        //    }
-        //}
+        [DisplayName("Meeting Info")]
+        public int MeetingSize // people invited + host
+        {
+            get
+            {
+                return NumOfInvites + 1;
+            }
+        }
 
 
 
