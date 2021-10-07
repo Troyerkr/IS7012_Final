@@ -40,7 +40,7 @@
                 </dd>
             </dl>
             <div class="row">
-                <a class="btn btn-warning btn-lg btn-block" asp-page="./Edit" asp-route-id="@Model.MeetingUser.Id" >Edit User Information</a>
+                <a class="btn btn-outline-warning btn-lg btn-block" asp-page="./Edit" asp-route-id="@Model.MeetingUser.Id" >Edit User Information</a>
             </div>
         </div>
         <div class="col">
@@ -69,7 +69,13 @@
                     </tr>
                 }
                 </tbody>
-                <tfoot></tfoot>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <a class="btn btn-outline-success btn-lg btn-block" asp-area="" asp-page="/Meetings/Create">Create Meeting</a>
+                        </td>
+                    </tr>
+                </tfoot>
             </table>
             }
             else
@@ -115,7 +121,7 @@
                                 }
                             </td>
                             <td>
-                                <a class="badge badge-pill badge-warning" asp-page="./RSVP" asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-warning" asp-page="./RSVP" asp-route-id="@item.Id">Edit</a>
                             </td>
                         </tr>
                     }
