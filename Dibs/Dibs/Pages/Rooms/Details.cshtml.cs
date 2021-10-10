@@ -28,7 +28,9 @@ namespace Dibs.Pages.Rooms
                 return NotFound();
             }
 
-            Room = await _context.Room.FirstOrDefaultAsync(m => m.Id == id);
+            Room = await _context.Room
+                .Include(m => m.Meetings)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (Room == null)
             {

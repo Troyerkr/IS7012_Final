@@ -19,6 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Room[0].Capacity)
             </th>
+            <th>
+                Total Meetings
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -30,6 +33,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Capacity)
+            </td>
+            <td>
+                @item.Meetings.Count()
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
